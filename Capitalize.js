@@ -26,7 +26,10 @@ function capitalize3 (str) {
     }
     return result;
 }
+const args = [
+    'it, is ok short sentence'
+];
 
-capitalize('it, is ok short sentence') /*?.*/
-capitalize2('it, is ok short sentence') /*?.*/
-capitalize3('it, is ok short sentence') /*?.*/
+capitalize(...args) //?. $
+capitalize2(...args) //?. $
+capitalize3(...args) //?. $
