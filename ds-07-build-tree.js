@@ -38,3 +38,25 @@ class Tree {
         }
     }
 }
+
+
+function levelWidth (root) {
+
+    const SEPARATOR = 's';
+    const queue = [root, SEPARATOR];
+    const counters = [0];
+
+    while (queue.length > 1) {
+        const node = queue.shift();
+
+        if (node === SEPARATOR) {
+            counter.push(0);
+            queue.push(SEPARATOR);
+        } else {
+            queue.push(...node.children);
+            counters[counters.length - 1]++;
+        }
+    }
+
+    return counters;
+} 
