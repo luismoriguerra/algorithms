@@ -1,5 +1,5 @@
-1. Based on array ['a','b','c','a', 'c', 'c' ];
-2. Return expected ['b']
+// 1. Based on array ['a','b','c','a', 'c', 'c' ];
+// 2. Return expected ['b']
 
 // By Recursion pattern
 

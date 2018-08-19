@@ -22,12 +22,12 @@ function bubbleSortOptimized(array) {
             if (array[j] > array[j + 1]){
                 [array[j], array[j + 1]] = [array[j+1], array[j]];
                 swapped = true
+            }
+            if (!swapped) break;
         }
-        if (!swapped) break;
-    }
     return array;
+    }
 }
-
 
 function insertionSort(array) {
     array = array.slice();
@@ -51,4 +51,4 @@ var b = bubbleSortOptimized([3,1,2,4]);
 // b
 
 var c = insertionSort([4,3,2,1]);
-// cm 
+// cm

@@ -1,17 +1,17 @@
 
-function quickSort (array) {
+export function quickSort (array) {
     array = array.slice();
     partition(array, 0 , array.length);
     return array;
 }
 
 
-function partition(array, start, before) {
+export function partition(array, start, before) {
     const length = before - start;
     
     if (length <= 1) return;
     
-    const pivotIndex = start + Math.floor(Math.random() * length);
+    const pivotIndex = start + Math.floor(Math.random() * length); //?
     [array[start], array[pivotIndex]] = [array[pivotIndex], array[start]];
 
     const pivot = array[start];
