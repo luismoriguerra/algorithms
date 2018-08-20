@@ -8,6 +8,7 @@ it('Validate recognizes a valid BST', () => {
     n.insert(15);
     n.insert(0);
     n.insert(20);
+    n.insert(6)
   
     expect(Node.validate(n)).toEqual(true);
   });
