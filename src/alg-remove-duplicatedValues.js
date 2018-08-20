@@ -15,8 +15,8 @@ function rec(arr, length) {
 	}
 
 }
-var arr = ['a','b','c','a', 'c', 'c' , 'd' ];
-rec(arr , arr.length)
+// var arr = ['a','b','c','a', 'c', 'c' , 'd' ];
+// rec(arr , arr.length)
 
 
 // By Reduce Method
@@ -26,5 +26,5 @@ var fn = (list) => list.reduce((acc , item) => (
     [item]: Object.keys(acc).indexOf(item) > -1  && acc[item] + 1 || 1  
   }) 
   , {});
-var counts = fn(['a','b','c','a', 'c' , 'c', 'd', 'd', 'd' ])
-Object.keys(counts).filter( item => counts[item] === 1);
+// var counts = fn(['a','b','c','a', 'c' , 'c', 'd', 'd', 'd' ])
+// Object.keys(counts).filter( item => counts[item] === 1);

@@ -1,5 +1,5 @@
 
-class Node {
+export class Node {
 
     constructor(data) {
         this.data = data;
@@ -13,7 +13,7 @@ class Node {
         } else if (data < this.data) {
             this.left = new Node(data);
         } else if (data > this.data && this.right) {
-            this.right.this.insert(data);
+            this.right.insert(data);
         } else if (data > this.data) {
             this.right = new Node(data);
         }
@@ -28,7 +28,20 @@ class Node {
             return this.left.contains(data);
         }
 
-        return null
+        return null;
+    }
+
+    static validate (node, min = null, max = null) {
+
+        if (max !== null && node.data > max) return false;
+
+        if (min !== null && node.data < min) return false;
+
+        if (node.left && !Node.validate(node.left, min, node.data)) return false;
+
+        if (node.right && !Node.validate(node.right, node.data, max)) return false;
+
+        return true;
     }
     
 }

@@ -1,17 +1,22 @@
-module.exports = () => {
+module.exports = (wallaby) => {
   return {
     files: [
       'src/**/*.js',
-      { pattern: 'src/**/*.test.js', ignore: true}
+      'src/*.js',
+      { pattern: 'src/**/*.test.js', ignore: true},
+      { pattern: 'src/*.test.js', ignore: true},
     ],
     tests: [
-      'src/**/*.test.js'
+      'src/**/*.test.js',
+      'src/*.test.js'
     ],
     env: {
       type: 'node',
-      params: {
-        runner: `-r ${require.resolve('esm')}`
-      }
+    },
+    compilers: {
+      '**/*.js': wallaby.compilers.babel({
+        "presets": ["env"]
+      })
     },
     testFramework: 'jasmine'
   };
