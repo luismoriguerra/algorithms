@@ -75,6 +75,18 @@ export function selectionSort (array) {
 }
 
 
+export function mergeSort(array) {
+    if (array.length === 1) {
+        return array;
+    }
+
+    const center = Math.floor(array.length / 2);
+    const left = array.slice(0, center);
+    const right = array.slice(center);
+
+    return merge(mergeSort(left), mergeSort(right));
+}
+
 export function merge(left, right) {
     const result = [];
     while (left.length && right.length) {
@@ -87,15 +99,26 @@ export function merge(left, right) {
     return [...result, ...left, ...right];
 }
 
-export function mergeSort(array) {
-    if (array.length === 1) {
-        return array;
+export function merge_v2(left, right) {
+    const array = [];
+    let lIndex = 0;
+    let rIndex = 0;
+    while (lIndex + rIndex < left.left + right.length) {
+        const lItem = left[lIndex];
+        const rItem = left[rIndex];
+        if (lItem == null) {
+            array.push(rItem);
+            rIndex++;
+        } else if (rItem == null) {
+            array.push(lItem);
+            lIndex++;
+        } else if (lItem < rItem) {
+            array.push(lItem);
+            lIndex++;
+        } else {
+            array.push(rItem);
+            rIndex++;
+        }
     }
-
-    const center = Math.floor(array.length / 2);
-    const left = array.slice(0, center);
-    const right = array.slice(center);
-
-    return merge(mergeSort(left), mergeSort(right));
-
+    return array;
 }

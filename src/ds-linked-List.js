@@ -1,4 +1,4 @@
-
+// node {value, next} -> node {value, next} -> undefined
 class Node {
     constructor(data, next = null) {
         this.data = data;
@@ -176,3 +176,46 @@ function fromLast(list, n) {
   
   
 }
+
+
+
+export class LinkedList_PRO {
+    head = undefined;
+    tail = undefined; // keep the last one
+
+    // Add item in O(1)
+    add (value) {
+        const node = { value, next: undefined }
+
+        if (!this.head) this.head = node;
+
+        if (this.tail) this.tail.next = node; // Defined previous last one as Parent of the new Node
+
+        this.tail = node; // define the last Node
+    }
+
+    // fifo removal in O(1)
+    dequeue () {
+
+        if (this.head) {
+
+            const value = this.head.value;
+            this.head = this.head.next;
+
+            if (!this.head) {
+                this.tail = undefined;
+            }
+            return value;
+        }
+    }
+
+    // iterator over values
+    *values () {
+        let current = this.head;
+        while(current) {
+            yield current.value;
+            current = current.next;
+        } 
+    }
+}
+

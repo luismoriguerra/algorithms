@@ -11,28 +11,24 @@ export function partition(array, start, before) {
     
     if (length <= 1) return;
     
-    const pivotIndex = start + Math.floor(Math.random() * length); //?
+    const pivotIndex = start + Math.floor(Math.random() * length);
     [array[start], array[pivotIndex]] = [array[pivotIndex], array[start]];
 
-    const pivot = array[start];
-    
-    let pivotRank = start;
+    const pivot = array[start];;
+    let pivotRank = start; 
     
     for (let index = start + 1; index < before; index++) {
-        if (array[index] < pivot) {
+
+        if (pivot > array[index]) {
             pivotRank++;
             [array[index], array[pivotRank]] = [array[pivotRank], array[index]];
         }
     }
-
+    
     if (pivotRank !== start) {
         [array[pivotRank], array[start]] = [array[start], array[pivotRank]]
     }
 
     partition(array, start, pivotRank);
     partition(array, pivotRank + 1, before);
-
 }
-
-var a = quickSort([4,3,2,1,6,8,10,4,2]);
-a //?

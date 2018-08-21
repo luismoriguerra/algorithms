@@ -1,4 +1,4 @@
-import { bubbleSortConcept, bubbleSortIdiomatic, selectionSort, mergeSort} from './alg-sort-bubble';
+import { bubbleSortConcept, bubbleSortIdiomatic, selectionSort, mergeSort, insertionSort} from './alg-sort-bubble';
 
 function getArray() {
     return [100, -40, 500, -124, 0, 21, 7];
@@ -18,6 +18,9 @@ describe('Bubble sort', () => {
 
       expect(selectionSort([4,3,2,1])).toEqual([1,2,3,4]);
       expect(selectionSort([100, -40, 500, -124, 0, 21, 7])).toEqual([-124, -40, 0, 7, 21, 100, 500]);
+      
+      expect(insertionSort([4,3,2,1])).toEqual([1,2,3,4]);
+      expect(insertionSort([100, -40, 500, -124, 0, 21, 7])).toEqual([-124, -40, 0, 7, 21, 100, 500]);
 
       expect(mergeSort([4,3,2,1])).toEqual([1,2,3,4]);
       expect(mergeSort([100, -40, 500, -124, 0, 21, 7])).toEqual([-124, -40, 0, 7, 21, 100, 500]);
