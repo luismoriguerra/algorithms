@@ -1,11 +1,11 @@
 
 function chunk1 (arr , size, acc = []) {
-    if(arr.length) {
-        acc.push([...arr.splice(0, size)])
-        return chunk1(arr, size, acc)
-    } else {
-        return acc;
-    }
+
+    if (!arr.length) return acc;
+
+    acc.push([...arr.splice(0, size)]);
+
+    return chunk1(arr, size, acc)
 }
 
 function chunk2 (arr , size) {
@@ -40,7 +40,7 @@ function chunk4(arr , size) {
     return chunked;
 }
 
-chunk1([1,2,3,4,5,7, 8,9, 10], 5) /*?.*/
-chunk2([1,2,3,4,5,7, 8,9, 10], 5) /*?.*/
-chunk3([1,2,3,4,5,7, 8,9, 10], 5) /*?.*/
-chunk4([1,2,3,4,5,7, 8,9, 10], 5) /*?.*/
+chunk1([1,2,3,4,5,7, 8,9, 10], 5) 
+chunk2([1,2,3,4,5,7, 8,9, 10], 5) 
+chunk3([1,2,3,4,5,7, 8,9, 10], 5) 
+chunk4([1,2,3,4,5,7, 8,9, 10], 5) 
