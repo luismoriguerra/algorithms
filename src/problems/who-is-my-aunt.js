@@ -501,11 +501,18 @@ const Sues = [
     { id: ' 500', cars: 1, perfumes: 6, vizslas: 1, }]
     
 
+
+const operators = {
+    lessThan: (src, external ) => src < external,
+    greatThan: (src, external ) => src > external,
+    EqualThan: (src, external ) => src === external,
+}
+
 const target = {
-    children: (num)=> num === 3,
-    cats: (num) => num > 7,
-    samoyeds: (num)=> num === 2,
-    pomeranians: (num) => num < 3,
+    children: operators.EqualThan.bind(null, 3),
+    cats: operators.greatThan.bind(null, 7),
+    samoyeds:  operators.EqualThan.bind(null, 2),
+    pomeranians:  operators.greatThan.bind(null, 7),    
     akitas: (num)=> num === 0,
     vizslas: (num)=> num === 0,
     goldfish: (num) => num < 5,
@@ -514,9 +521,8 @@ const target = {
     perfumes: (num)=> num === 1,
 }
 
-const myAunt = Sues.filter(sue =>
-    Object.keys(sue)
-        .filter((key) => key.trim() !== 'id')
-        .every(key => target[key](sue[key])))
+const myAunt = Sues.filter(sue => Object.keys(sue)
+    .filter((key) => key.trim() !== 'id')
+    .every(key => target[key](sue[key])));
 
 console.log(myAunt)
