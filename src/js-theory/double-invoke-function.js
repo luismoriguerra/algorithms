@@ -1,5 +1,3 @@
-
-
 /**
  * arguments : Object : Array-like
  * 
@@ -12,7 +10,7 @@
  *  Array.prototype.slice.call(arguments)
  *  [].slice.call(arguments)
  * 
- *  ES2015
+ *  ES6
  *  const args = Array.from(arguments);
  */
 
@@ -25,6 +23,14 @@ function getTotal() {
         return function(num) {
             return arg[0] + num;
         }
+    }
+}
+
+function sum(x , y) {
+    if (y !== undefined) {
+        return x + y;
+    } else {
+        return (num) => x + num;
     }
 }
 
