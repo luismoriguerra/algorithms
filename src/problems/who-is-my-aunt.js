@@ -521,10 +521,53 @@ const target = {
     perfumes: (num)=> num === 1,
 }
 
-const myAunt = Sues
-    .filter(sue => Object.keys(sue)
-        .filter((key) => key.trim() !== 'id')
-        .every(key => target[key](sue[key]))
+const myAunt = Sues.filter(sue => 
+        Object.keys(sue).filter((key) => key.trim() !== 'id')
+            .every(key => target[key](sue[key]))
     );
 
 console.log(myAunt)
+
+
+// #################### Functional con pipes
+const description = {
+    children: 3, // equal
+    cats: 7, ///operators.greatThan.bind(null, 7),
+    samoyeds: 2, // operators.EqualThan.bind(null, 2),
+    pomeranians: 7, // operators.greatThan.bind(null, 7),
+    akitas: 0, // (num)=> num === 0,
+    vizslas: 0, // (num)=> num === 0,
+    goldfish: 5, //(num) => num < 5,
+    trees: 3 , //(num) => num > 3,
+    cars: 2, //(num)=> num === 2,
+    perfumes: 1, //(num)=> num === 1,
+}
+
+function pipe (...fns) {
+    return function piped (data, target) {
+        var reducedList = data.slice();
+        for (var i = 0; i < fns.length; i++) {
+            reducedList = reducedList.filter((item) => fns[i](item, target));
+        }
+        return reducedList;
+    }
+};
+
+pipe.greatThan = ( name ) => (source, target) => source[name] > target[name] || source[name] === undefined;
+pipe.lessThan = ( name ) => (source, target) => source[name] < target[name] || source[name] === undefined;
+pipe.equal = ( name ) => (source, target) => source[name] === target[name] || source[name] === undefined;
+
+const WhoIsMyAunt = pipe(
+    pipe.equal('children') ,
+    pipe.greatThan('cats'),
+    pipe.equal('samoyeds'),
+    pipe.greatThan('pomeranians'),
+    pipe.equal('akitas'),
+    pipe.equal('vizslas'),
+    pipe.lessThan('goldfish'),
+    pipe.greatThan('trees'),
+    pipe.equal('cars'),
+    pipe.equal('perfumes'),
+)(Sues, description)
+
+console.log('WhoIsMyAunt: ', WhoIsMyAunt);
